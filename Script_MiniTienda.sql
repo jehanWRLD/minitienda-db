@@ -31,9 +31,12 @@ create procedure procDeleteCategory(IN v_id INT)
 begin
      delete from tbl_categorias where cat_id = v_id;
 end//
+ feature-create-model
+=======
  feature-create-sp-users
 
  feature-create-sp-providers
+ develop
  develop
 DELIMITER ;
 -- -------------------------------------------------------------------------------------------------------------------------------------------
@@ -73,7 +76,10 @@ end//
 DELIMITER ;
 -- -------------------------------------------------------------------------------------------------------------------------------------------
 -- Usuarios
+ feature-create-model
+=======
  feature-create-sp-users
+ develop
 -- Insertar
 DELIMITER //
 create procedure procInsertUser(IN v_correo VARCHAR(80), IN v_contrasena TEXT, IN v_salt TEXT, IN v_estado VARCHAR(15))
@@ -111,9 +117,46 @@ DELIMITER ;
 -- -------------------------------------------------------------------------------------------------------------------------------------------
 -- Productos
 
+ feature-create-model
+-- Insertar 
+DELIMITER //
+create procedure procInsertProduct(IN v_codigo VARCHAR(45), IN v_descripcion VARCHAR(100), IN v_cantidad INT, IN v_precio DOUBLE, IN v_prov_id INT, IN v_cat_id INT)
+begin 
+     insert into tbl_productos (pro_codigo, pro_descripcion, pro_cantidad, pro_precio, tbl_proveedores_prov_id, tbl_categorias_cat_id)
+     values (v_codigo, v_descripcion, v_cantidad, v_precio, v_prov_id, v_cat_id);
+end//
+DELIMITER ;
+
+-- Actualizar
+DELIMITER //
+create procedure procUpdateProduct(IN v_id INT, IN v_codigo VARCHAR(45), IN v_descripcion VARCHAR(100), IN v_cantidad INT, IN v_precio DOUBLE, IN v_prov_id INT, IN v_cat_id INT)
+begin
+     update tbl_productos
+     set pro_codigo = v_codigo, pro_descripcion = v_descripcion, pro_cantidad = v_cantidad, pro_precio = v_precio, tbl_proveedores_prov_id = v_prov_id, tbl_categorias_cat_id = v_cat_id
+     where pro_id = v_id;
+end//
+DELIMITER ;
+
+-- Mostrar
+DELIMITER //
+create procedure procSelectProduct()
+begin
+     select pro_id, pro_codigo, pro_descripcion, pro_cantidad, pro_precio, tbl_proveedores_prov_id, tbl_categorias_cat_id from tbl_productos;
+end//
+DELIMITER ;
+
+-- Eliminar
+DELIMITER //
+create procedure procDeleteProduct(IN v_id INT)
+begin
+     delete from tbl_productos where pro_id = v_id;
+end//
+DELIMITER ;
+=======
 
 -- Productos
 
 DELIMITER ;
+ develop
  develop
  develop
