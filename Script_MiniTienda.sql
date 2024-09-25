@@ -31,4 +31,47 @@ create procedure procDeleteCategory(IN v_id INT)
 begin
      delete from tbl_categorias where cat_id = v_id;
 end//
+ feature-create-sp-providers
 DELIMITER ;
+-- -------------------------------------------------------------------------------------------------------------------------------------------
+-- Proveedores
+-- Insertar
+DELIMITER //
+create procedure procInsertProviders(IN v_nit VARCHAR(45), IN v_nombre VARCHAR(100))
+begin 
+     insert into tbl_proveedores (prov_nit, prov_nombre) values (v_nit, v_nombre);
+end//
+DELIMITER ;
+
+-- Actualizar
+DELIMITER //
+create procedure procUpdateProviders(IN v_id INT, IN v_nit VARCHAR(45), IN v_nombre VARCHAR(100))
+begin
+     update tbl_proveedores
+     set prov_nit = v_nit, prov_nombre = v_nombre
+     where prov_id = v_id;
+end//
+DELIMITER ;
+
+-- Mostrar
+DELIMITER //
+create procedure procSelectProviders()
+begin
+     select prov_id, prov_nit, prov_nombre from tbl_proveedores;
+end//
+DELIMITER ;
+
+-- Eliminar
+DELIMITER //
+create procedure procDeleteProviders(IN v_id INT)
+begin
+     delete from tbl_proveedores where prov_id = v_id;
+end//
+DELIMITER ;
+-- -------------------------------------------------------------------------------------------------------------------------------------------
+-- Usuarios
+
+-- Productos
+
+DELIMITER ;
+ develop
