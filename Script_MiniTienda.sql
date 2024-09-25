@@ -31,6 +31,7 @@ create procedure procDeleteCategory(IN v_id INT)
 begin
      delete from tbl_categorias where cat_id = v_id;
 end//
+ feature-create-sp-providers
 DELIMITER ;
 -- -------------------------------------------------------------------------------------------------------------------------------------------
 -- Proveedores
@@ -71,3 +72,6 @@ DELIMITER ;
 -- Usuarios
 
 -- Productos
+
+DELIMITER ;
+ develop
